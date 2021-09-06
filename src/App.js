@@ -4,37 +4,20 @@ import React from "react";
 // If we don't use setState, render function wouldn't be called with the new state
 class App extends React.Component {
   state = {
-    count: 0,
-  };
-  add = () => {
-    // this.setState({ count: this.state.count + 1 });
-    this.setState((current) => ({ count: current.count + 1 }));
-  };
-  minus = () => {
-    // this.setState({ count: this.state.count - 1 });
-    this.setState((current) => ({ count: current.count - 1 }));
+    isLoading: true, // default is loading
   };
 
   componentDidMount() {
-    console.log("component rendered");
-  }
-
-  componentDidUpdate() {
-    console.log("I am just updated");
-  }
-
-  componentWillMount() {
-    console.log("Goodbye, cruel world");
+    //   delay function
+    setTimeout(() => {
+      setTimeout(() => {
+        this.setState({ isLoading: false });
+      }, 4000);
+    });
   }
   render() {
-    console.log("I am rendering");
-    return (
-      <div>
-        <h1>The number is {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
+    const { isLoading } = this.state; // return return{" "}
+    return <div>{isLoading ? "Loading...." : "We are ready 🤗"}</div>;
   }
 }
 
