@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./App.css";
 // Every time you call setState, react is going to rerender with the new state
 
 // If we don't use setState, render function wouldn't be called with the new state
@@ -28,12 +29,15 @@ class App extends React.Component {
   render() {
     const { isLoading, movies } = this.state; // return return{" "}
     return (
-      <div>
-        {isLoading
-          ? "Loading...."
-          : movies.map((movie) => (
-              //   console.log(movie);
-
+      <section class="container">
+        {isLoading ? (
+          <div class="loader">
+            <span class="loader_text">Loading...</span>
+          </div>
+        ) : (
+          //   console.log(movie);
+          <div class="movies">
+            {movies.map((movie) => (
               <Movie
                 key={movie.id}
                 id={movie.id}
@@ -43,7 +47,9 @@ class App extends React.Component {
                 poster={movie.medium_cover_image}
               />
             ))}
-      </div>
+          </div>
+        )}
+      </section>
     );
   }
 }
