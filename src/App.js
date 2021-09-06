@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// Every time you call setState, react is going to rerender with the new state
 
 // If we don't use setState, render function wouldn't be called with the new state
 class App extends React.Component {
@@ -7,10 +7,12 @@ class App extends React.Component {
     count: 0,
   };
   add = () => {
-    this.setState({ count: 1 });
+    // this.setState({ count: this.state.count + 1 });
+    this.setState((current) => ({ count: current.count + 1 }));
   };
   minus = () => {
-    this.setState({ count: -1 });
+    // this.setState({ count: this.state.count - 1 });
+    this.setState((current) => ({ count: current.count - 1 }));
   };
   render() {
     return (
