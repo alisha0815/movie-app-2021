@@ -36,6 +36,7 @@ class App extends React.Component {
           </div>
         ) : (
           //   console.log(movie);
+
           <div className="movies">
             {movies.map((movie) => (
               <Movie
